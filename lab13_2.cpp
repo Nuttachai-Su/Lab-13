@@ -34,6 +34,7 @@ void showImage(const bool p[][M]){
         cout << "|" << "\n";
     }
     for (int j = 0; j <= M+1; ++j) cout << "-";
+    cout << "\n";
 }
 
 void updateImage(bool p[N][M],int s, int x, int y){
@@ -44,5 +45,14 @@ void updateImage(bool p[N][M],int s, int x, int y){
     int i_max = min(N - 1, x + r);
     int j_min = max(0,     y - r);
     int j_max = min(M - 1, y + r);
-
+    
+for (int i = i_min; i <= i_max; ++i) {
+        for (int j = j_min; j <= j_max; ++j) {
+            int di = i - x;
+            int dj = j - y;
+            if (di*di + dj*dj <= r2) {
+                p[i][j] = true;
+            }
+        }
+    }
 }
